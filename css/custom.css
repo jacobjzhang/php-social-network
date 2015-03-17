@@ -1,0 +1,61 @@
+body {
+/*	background-image: url(c:/Users/jzhang/Documents/Portfolio/jaded/img/bg.png); */
+	background: url(/socialnetwork/img/carouselbg3.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+/* Navigation */
+.navbar {
+	background-color: #ffd65e;
+}
+
+.navbar-inverse .navbar-brand {
+	color: #000;
+}
+
+/* Carousel */
+div.jumbotron {
+	background: transparent;
+    padding: 120px 0 150px;
+}
+
+.jumbotron h1 {
+	color: #FFF;
+	font-family: 'Helvetica Neue', sans-serif;
+	font-weight: bold;
+	letter-spacing: -1px;
+}
+
+.jumbotron p {
+	color: #FFF;
+}
+
+/*Body */
+h2 {
+	font-family: 'Helvetica Neue', sans-serif;
+	font-weight: bold;
+	letter-spacing: -1px;	
+}
+
+#signup {
+/*	background: #ffd65e; */
+	background: #052f49; 
+	opacity: 0.9;
+	/* background:rgba(255,255,255,0.25); */
+	color: #000;
+}
+
+#about {
+	background:#101010;
+	opacity: 0.8;
+	/* background:rgba(255,255,255,0.25); */
+	color: #FFF;
+	padding: 0 20px;
+}
+
+.form-control {
+	background: #d2e8f4; 
+}

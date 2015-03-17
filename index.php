@@ -1,4 +1,5 @@
 <?php include ("./inc/header.inc.php"); ?>
+
 <?php
 $reg = @$_POST['reg'];
 //declaring variables to preent errors
@@ -30,26 +31,26 @@ if ($reg) {
     if ($check == 0) {
       //check that all of the fields have been filled in
       if ($fn && $ln && $un && $em && $em2 && $pswd && $pswd2) {
-	//Check that passwords match
-	if ($pswd == $pswd2) {
-	  //Check that the max length of username/first name and last name do not exceed 25 characters
-	  if (strlen($un) > 25 || strlen($fn) > 25 || strlen($ln) > 25) {
-	    echo "The maximum limit for your username, first name, or last name is 25 characters.";
-	  }
-	  else {
-	    //Check that the password does not exceed 25 characters and is under 5 characters
-	    if (strlen($pswd) > 30 || strlen($pswd) < 5) {
-	      echo "Your password must be between 5 and 30 characters long!"; }
-	    else {
-	      //Encrypt password and confirmation using MD5 before sending it to the database
-	      $pswd = md5($pswd);
-	      $pswd2 = md5($pswd2);
-	      $query = mysql_query("INSERT INTO users VALUES ('', '$un', '$fn', '$ln', '$em', '$pswd', '$d', '0')");
-	      die("<h2>Welcome to the Jaded Network!</h2> Login to get started!");
-	    }
-	  }
-	}
-	else {echo "Your passwords don't match!"; }
+  //Check that passwords match
+  if ($pswd == $pswd2) {
+    //Check that the max length of username/first name and last name do not exceed 25 characters
+    if (strlen($un) > 25 || strlen($fn) > 25 || strlen($ln) > 25) {
+      echo "The maximum limit for your username, first name, or last name is 25 characters.";
+    }
+    else {
+      //Check that the password does not exceed 25 characters and is under 5 characters
+      if (strlen($pswd) > 30 || strlen($pswd) < 5) {
+        echo "Your password must be between 5 and 30 characters long!"; }
+      else {
+        //Encrypt password and confirmation using MD5 before sending it to the database
+        $pswd = md5($pswd);
+        $pswd2 = md5($pswd2);
+        $query = mysql_query("INSERT INTO users VALUES ('', '$un', '$fn', '$ln', '$em', '$pswd', '$d', '0')");
+        die("<h2>Welcome to the Jaded Network!</h2> Login to get started!");
+      }
+    }
+  }
+  else {echo "Your passwords don't match!"; }
       }
       else {echo "Please fill in all necessary fields."; }
     }
@@ -81,33 +82,75 @@ if (isset($_POST["user_login"]) && isset($_POST["password_login"])) {
 
 ?>
 
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+      <div class="container">
+        <h1>let's collaborate.</h1>
+        <p>A network for product and project professionals.</p>
+        <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
+      </div>
+    </div>
+
+    <div class="container">
+      <!-- Example row of columns -->
+      <div class="row">
+        <div class="col-md-4" id="signup">
+          <h2>SIGN UP</h2>
+          <p>
+          <form action="index.php" method="POST">
+          <div class="form-group">
+            <label for="exampleInputName">First Name</label>
+            <input type="name" name="fname" class="form-control" id="exampleInputName" placeholder="Name">
+          </div>
+           <div class="form-group">
+            <label for="exampleInputName">Last Name</label>
+            <input type="name" name="lname" class="form-control" id="exampleInputName" placeholder="Name">
+          </div>
+           <div class="form-group">
+            <label for="exampleInputName">Username</label>
+            <input type="name" name="username" class="form-control" id="exampleInputName" placeholder="Name">
+          </div>                  
+          <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input type="email" name="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input type="email2" name="email2" class="form-control" id="exampleInputEmail1" placeholder="Enter email (confirmation)">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Confirm Password</label>
+            <input type="password" name="password2" class="form-control" id="exampleInputPassword2" placeholder="Password (Confirmation)">
+          </div>
+          <input type="submit" name="reg" class="btn btn-primary">Submit</button>
+        </form>
+        </p>
+        </div>
+        <div class="col-md-8" id="about">
+          <h2>Heading</h2>
+          <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+       </div>
+      </div>
+
+      <hr>
+
+      <footer>
+        <p>&copy; Company 2014</p>
+      </footer>
+    </div> <!-- /container -->
 
 
-		<div style="width: 800px; margin: 20px auto 0px auto;">
-		<table>
-			<tr>
-				<td width="60%" valign="top">
-					<h2>Already a Member? Sign in below!</h2>
-					<form action="index.php" method="POST">
-						<input type="text" name="user_login" size="25" placeholder="Username"><br /><br />
-						<input type="text" name="password_login" size="25" placeholder="Password"><br /><br />
-						<input type="submit" name="login" value="Login"><br /><br />
-				</td>
-				<td width="40%" valign="top">
-					<h2>Sign Up Below</h2>
-					<form action="index.php" method="POST">
-						<input type="text" name="fname" size="25" placeholder="First Name" /><br /><br />
-						<input type="text" name="lname" size="25" placeholder="Last Name" /><br /><br />
-						<input type="text" name="username" size="25" placeholder="Username" /><br /><br />
-						<input type="text" name="email" size="25" placeholder="Email Address" /><br /><br />
-						<input type="text" name="email2" size="25" placeholder="Email Address (confirmation)" /><br /><br />
-						<input type="text" name="password" size="25" placeholder="Password"><br /><br />
-						<input type="text" name="password2" size="25" placeholder="Password (confirmation)" /><br /><br />
-						<input type="submit" name="reg" value="Sign Up!" />
-						
-					</form>
-				</td>
-			</td>
-		</table>
-		</div>
-<?php include ("./inc/footer.inc.php"); ?>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>
